@@ -1,4 +1,4 @@
-package ch.heigvd.iict.and.labo4.models
+package ch.heigvd.iict.and_labo4.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
