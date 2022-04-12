@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">AND_Labo4</string>
+    <string name="app_name">AND Labo 4</string>
+    <string name="menu_sort">Sort</string>
+    <string name="menu_sort_creation_date">Creation date</string>
+    <string name="menu_sort_eta">ETA</string>
+    <string name="menu_btn_generate_note">Generate</string>
+    <string name="menu_btn_delete_all_note">Delete all</string>
 </resources>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import ch.heigvd.iict.and_labo4.NotesViewModel
 
 /**
  * NotesActivity
