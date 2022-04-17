@@ -3,7 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/HEIG-VD/BA6/AND/AND_Labo4/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/drawable-v24/clock.xml" value="0.1" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/drawable-v24/family.xml" value="0.1055" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/drawable-v24/note.xml" value="0.1055" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/drawable-v24/shopping.xml" value="0.1055" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/drawable-v24/todo.xml" value="0.1055" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/drawable-v24/work.xml" value="0.1325" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout-large/activity_notes.xml" value="0.13080601092896174" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout-large/fragment_note.xml" value="0.13465952563121653" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout-large/fragment_note_list.xml" value="0.13465952563121653" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout-large/fragment_notes_list.xml" value="0.1" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout/activity_notes.xml" value="0.1875" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout/fragment_control.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout/fragment_list.xml" value="0.1" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout/list_item_common.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout/list_item_scheduled_note.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/layout/list_item_simple_note.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/menu-large/menu_notes.xml" value="0.227734375" />
+        <entry key="..\:/Users/melvy/Desktop/AND_Labo4/app/src/main/res/menu/menu_notes.xml" value="0.1875" />
       </map>
     </option>
   </component>

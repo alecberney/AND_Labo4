@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <include android:id="@+id/scheduled_note_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/list_item_common"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/scheduled_note_clock"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/clock"
+        app:layout_constraintBottom_toTopOf="@id/scheduled_note_deadline"
+        app:layout_constraintRight_toRightOf="@id/scheduled_note_deadline"
+        app:layout_constraintLeft_toLeftOf="@id/scheduled_note_deadline"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/scheduled_note_deadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_placeholder"
+        android:lines="1"
+        android:ellipsize="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scheduled_note_clock"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

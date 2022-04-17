@@ -5,4 +5,14 @@
     <string name="menu_sort_eta">ETA</string>
     <string name="menu_btn_generate_note">Generate</string>
     <string name="menu_btn_delete_all_note">Delete all</string>
+    <string name="list_title">My notes</string>
+    <string name="title_placeholder">Title placeholder</string>
+    <string name="text_placeholder">Text placeholder</string>
+    <string name="delay_placeholder">Delay placeholder</string>
+    <string name="late">Late</string>
+    <string name="months">%1$d month(s)</string>
+    <string name="weeks">%1$d week(s)</string>
+    <string name="days">%1$d day(s)</string>
+    <string name="generate">Generate</string>
+    <string name="delete">Delete</string>
 </resources>

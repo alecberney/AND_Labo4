@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ch.heigvd.iict.and_labo4">
+    package="com.and.and_labo4">
 
     <application
+        android:name=".NotesApplication"
         android:allowBackup="true"
-        android:name=".ApplicationNotes"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
