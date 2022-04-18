@@ -13,16 +13,32 @@ import com.and.and_labo4.models.Note
 import com.and.and_labo4.models.Schedule
 import kotlin.concurrent.thread
 
+/**
+ * Notes database
+ * @author Berney Alec
+ * @author Forestier Quentin
+ * @author Herzig Melvyn
+ */
 @Database(entities = [Note::class, Schedule::class],
     version = 1,
     exportSchema = true)
 @TypeConverters(CalendarConverter::class, StateConverter::class, TypeConverter::class)
 abstract class NotesDatabase : RoomDatabase() {
 
+    /**
+     * Returns the dao to access database.
+     */
     abstract fun notesDao() : NotesDAO
 
     companion object {
+        /**
+         * Unique database instance.
+         */
         private var INSTANCE : NotesDatabase? = null
+
+        /**
+         * Returns the database unique instance.
+         */
         fun getDatabase(context: Context) :NotesDatabase {
             return INSTANCE ?: synchronized(this) {
                 INSTANCE = Room.databaseBuilder(context.applicationContext,
@@ -37,9 +53,15 @@ abstract class NotesDatabase : RoomDatabase() {
 
 
     private class NotesDatabaseCallback : RoomDatabase.Callback() {
+
+        /**
+         * Callback function when database is accessed
+         */
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             INSTANCE?.let {database ->
+
+                // If no notes, generate 5 notes
                 val isEmpty = database.notesDao().getCount().value == null
                 if(isEmpty) {
                     thread {
@@ -56,8 +78,5 @@ abstract class NotesDatabase : RoomDatabase() {
                 }
             }
         }
-        override fun onOpen(db: SupportSQLiteDatabase) { super.onOpen(db) }
-        override fun onDestructiveMigration(db: SupportSQLiteDatabase) { super.onDestructiveMigration(db) }
     }
-
 }

@@ -4,6 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
+
+/**
+ * Schedule model
+ */
 @Entity
 data class Schedule(
     @PrimaryKey(autoGenerate = true) var scheduleId : Long?,

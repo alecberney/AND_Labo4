@@ -5,6 +5,9 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 
+/**
+ * Note model
+ */
 @Entity
 data class Note(
     @PrimaryKey(autoGenerate = true) var noteId : Long?,
@@ -15,15 +18,28 @@ data class Note(
     var type : Type
 ) {
     companion object {
+        /**
+         * Randomizer
+         */
         private val rand = Random()
 
+        /**
+         * Allowed chars in random text and title
+         */
         private val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+
+        /**
+         * Generates a random string
+         */
         private fun getRandomString(length: Int = 12) : String {
             return (1..length)
                 .map { allowedChars.random() }
                 .joinToString("")
         }
 
+        /**
+         * Generates a random note
+         */
         fun generateRandomNote() : Note {
             val _state = if(rand.nextBoolean()) State.IN_PROGRESS else State.DONE
             val _title = getRandomString(4 + rand.nextInt(10))
@@ -40,6 +56,9 @@ data class Note(
             )
         }
 
+        /**
+         * Generate a random schedule
+         */
         fun generateRandomSchedule() : Schedule? {
             if(rand.nextBoolean()) return null
             val inThePast = rand.nextDouble() > 0.9

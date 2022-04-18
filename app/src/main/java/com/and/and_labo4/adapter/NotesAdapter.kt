@@ -1,26 +1,16 @@
 package com.and.and_labo4.adapter
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
-import android.media.ExifInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.and.and_labo4.R
 import com.and.and_labo4.models.NoteAndSchedule
 import com.and.and_labo4.models.State
 import com.and.and_labo4.models.Type
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.io.File
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -179,7 +169,6 @@ class NotesAdapter() : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
             when(noteAndSchedule.note.state) {
                 State.IN_PROGRESS -> typeIcon.setColorFilter(view.context.getColor(R.color.blue))
                 State.DONE -> typeIcon.setColorFilter(view.context.getColor(R.color.green))
-                else -> { /* Keep default color */ }
             }
 
             // Set title and text

@@ -15,33 +15,20 @@ import com.and.and_labo4.models.NoteAndSchedule
 class NotesViewModel(private val repository: NotesRepository) : ViewModel() {
 
     /**
-     * Attribute that correspond to all notes.
+     * Attribute that corresponds to all notes.
      */
-    val allNotes : LiveData<List<NoteAndSchedule>> get() = _allNotes
-
-    /**
-     * Private attribute storing all notes. "Observed" by attribute allNotes.
-     */
-    private val _allNotes = repository.allNotes
+    val allNotes : LiveData<List<NoteAndSchedule>> get() = repository.allNotes
 
     /**
      * Attribute that correspond to the notes count.
      */
-    val countNotes : LiveData<Long> get() = _countNotes
-
-    /**
-     * Attribute that correspond to the notes count. "Observed" by attribute countNotes.
-     */
-    private val _countNotes = repository.notesCount
+    val countNotes : LiveData<Long> get() = repository.notesCount
 
     /**
      * Generates a random note and add it in the database.
      */
     fun generateANote() {
-
-        // Generating random noteAndSchedule
         repository.insertNoteWithSchedule(Note.generateRandomNote(), Note.generateRandomSchedule())
-        val newNote = Note.generateRandomNote()
     }
 
     /**

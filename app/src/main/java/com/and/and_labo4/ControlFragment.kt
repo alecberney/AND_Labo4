@@ -9,15 +9,12 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//private const val ARG_PARAM1 = "param1"
-//private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- * Use the [ControlFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Controller fragment with a delete all notes button and generate a random note button
+ * @author Berney Alec
+ * @author Forestier Quentin
+ * @author Herzig Melvyn
  */
 class ControlFragment : Fragment() {
 
@@ -25,14 +22,9 @@ class ControlFragment : Fragment() {
         NotesViewModelFactory((requireActivity().application as NotesApplication).repository)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    /**
+     * When view is being created, inflates layout.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,41 +33,36 @@ class ControlFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_control, container, false)
     }
 
+    /**
+     * When view is created, set interactions.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Counter
         val counter = view.findViewById<TextView>(R.id.counter)
         notesViewModel.countNotes.observe(viewLifecycleOwner) { value ->
             counter.text = "$value"
         }
 
+        // Generate a random note
         view.findViewById<Button>(R.id.btn_generate).setOnClickListener {
             notesViewModel.generateANote()
         }
 
+        // Delete all notes
         view.findViewById<Button>(R.id.btn_delete).setOnClickListener {
             notesViewModel.deleteAllNote()
         }
     }
 
-
     companion object {
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ControlFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ControlFragment().apply {
-                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-                }
-            }
+        fun newInstance() =
+            ControlFragment()
     }
 }

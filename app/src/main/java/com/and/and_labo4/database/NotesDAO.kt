@@ -6,6 +6,12 @@ import com.and.and_labo4.models.Note
 import com.and.and_labo4.models.NoteAndSchedule
 import com.and.and_labo4.models.Schedule
 
+/**
+ * Dao to notes database access
+ * @author Berney Alec
+ * @author Forestier Quentin
+ * @author Herzig Melvyn
+ */
 @Dao
 interface NotesDAO {
 
@@ -24,12 +30,6 @@ interface NotesDAO {
     @Insert
     fun insert(note : Note) : Long
 
-    @Insert
-    fun insertAll(vararg note : Note)
-
-    @Update
-    fun update(note : Note)
-
     @Delete
     fun delete(note : Note)
 
@@ -45,12 +45,6 @@ interface NotesDAO {
 
     @Insert
     fun insert(schedule : Schedule) : Long
-
-    @Update
-    fun update(schedule : Schedule)
-
-    @Delete
-    fun delete(schedule : Schedule)
 
     @Query("DELETE FROM schedule")
     fun deleteAllSchedules()
