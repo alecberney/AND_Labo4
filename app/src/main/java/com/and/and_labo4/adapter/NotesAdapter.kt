@@ -108,7 +108,6 @@ class NotesAdapter() : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
         private val clockImage   = view.findViewById<ImageView>(R.id.scheduled_note_clock)
         private val deadlineText = view.findViewById<TextView>(R.id.scheduled_note_deadline)
 
-        //private val nameAves = view.findViewById<TextView>(R.id.list_item_aves_name)
         fun bind(noteAndSchedule: NoteAndSchedule) {
 
             // If simple note
