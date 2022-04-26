@@ -14,7 +14,7 @@
 <br>
 
 Cette solution présente des limites au niveau du nombre de données stockées et de la mémoire utilisée par les LiveData.
-Pour illustrer ceci, prenons notre notre cas de laboratoire, nous avons la requête suivante pour récupérer les notes:
+Pour illustrer ceci, prenons notre cas de laboratoire, nous avons la requête suivante pour récupérer les notes:
 ````
 @Query("SELECT * FROM note")
 ````
