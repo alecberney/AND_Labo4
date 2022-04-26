@@ -26,7 +26,7 @@ prefs = this.activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
 ```` 
 
-Lorsque l'adapteur contenant la liste des notes se modifie, on vérifie l'état de préférence de l'ordre et on trie la liste, une fois qu'elle est remplie.
+Lorsque l'adapteur contenant la liste des notes se modifie, on vérifie l'état de préférence de l'ordre et l’on trie la liste, une fois qu'elle est remplie.
 ````
 notesViewModel.allNotes.observe(viewLifecycleOwner) { value ->
             adapter.items = value
@@ -44,10 +44,10 @@ notesViewModel.allNotes.observe(viewLifecycleOwner) { value ->
 
 Le fait de trier dès qu'un changement s'effectue dans la liste, permet également à ce qu'un nouvel élément soit trié dès son insertion.
 
-Également, l'ordre de tri sera garder lorsqu'une rotation d'écran s'effectue.
+Également, l'ordre de tri sera gardé lorsqu'une rotation d'écran s'effectue.
 
 Étant donné la simplicité à la mise en oeuvre, cette méthode nous parait être la meilleure approche pour sauvegarder le choix de l'utilisateur. 
-Il nous suffit d'enregister son choix dans les différentes méthodes de tri afin de sauvegarder son dernier choix.
+Il nous suffit d'enregistrer son choix dans les différentes méthodes de tri afin de sauvegarder son dernier choix.
 
 ```` 
     /**
@@ -80,17 +80,17 @@ Pour illustrer ceci, prenons notre cas de laboratoire, nous avons la requête su
 ````
 @Query("SELECT * FROM note")
 ````
-Cela va charger toutes les notes dans la LiveData en mémoire. Si une grande quantité de données est présente, cela pourrait causé de gros problèmes de performance pour le smartphone utilisant le programme.
-Cette solution n’est clairement pas adapté à de grandes bases de données!
+Cela va charger toutes les notes dans la LiveData en mémoire. Si une grande quantité de données est présente, cela pourrait causer de gros problèmes de performance pour le smartphone utilisant le programme.
+Cette solution n’est clairement pas adaptée à de grandes bases de données!
 
 Pour contourner cette limitation, 2 options sont possibles:
 * Mettre en place de la pagination avec [_Paging de Jetpack_](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
 * Utiliser un [_Flow_](https://developer.android.com/codelabs/basic-android-kotlin-training-intro-room-flow#0)
 
-### <ins> 6.3 Les notes affichées dans la RecyclerView ne sont pas sélectionnables ni cliquables. Comment procéderiez-vous si vous souhaitiez proposer une interface persmettant de sélectionner une note pour l’éditer ? </ins>
+### <ins> 6.3 Les notes affichées dans la RecyclerView ne sont pas sélectionnables ni cliquables. Comment procéderiez-vous si vous souhaitiez proposer une interface permettant de sélectionner une note pour l’éditer ? </ins>
 <br>
 
-Les manipulations pour rendres les notes cliquables sont les suivantes:
+Les manipulations pour rendre les notes cliquables sont les suivantes:
 
  * Dans la déclaration de l'adapteur, nous définissons un argument (clickListener) pour récupérer une fonction qui représente un listener.
 
@@ -100,7 +100,7 @@ class NotesAdapter( private val clickListener: (NoteAndSchedule) -> Unit ) : Rec
 
  > Pour faire plus proprement, nous aurions pu utiliser une interface. Mais pour la simplicité de ce tutoriel, nous allons continuer avec des lambdas.
 
- * Dans la déclration du viewHolder, nous définissons une fonction en argument clickAtPosition.
+ * Dans la déclaration du viewHolder, nous définissons une fonction en argument clickAtPosition.
 
  ```
  inner class ViewHolder(view: View, clickAtPosition: (Int) -> Unit) : RecyclerView.ViewHolder(view)
@@ -116,7 +116,7 @@ class NotesAdapter( private val clickListener: (NoteAndSchedule) -> Unit ) : Rec
     }
 ```
 
-* Modifier onCreateViewHolder pour paser une fonction au viewHolder:
+* Modifier onCreateViewHolder pour passer une fonction au viewHolder:
 
 ```
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -136,7 +136,7 @@ class NotesAdapter( private val clickListener: (NoteAndSchedule) -> Unit ) : Rec
     }
 ```
 
-* Dans le fragment passer le listener à la création de l'adapteur:
+* Dans le fragment, passer le listener à la création de l'adapteur:
 
 ```
     private val adapter = NotesAdapter() {
