@@ -1,10 +1,13 @@
 package com.and.and_labo4
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.core.content.edit
 
 /**
  * Notes activity, display a list and controls such as creation and sort.
@@ -13,6 +16,10 @@ import androidx.activity.viewModels
  * @author Herzig Melvyn
  */
 class NotesActivity : AppCompatActivity() {
+
+
+
+    private lateinit var listFragment: ListFragment
 
     /**
      * Notes viewmodel
@@ -27,6 +34,8 @@ class NotesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
+        listFragment = supportFragmentManager.findFragmentById(R.id.fragment_list) as ListFragment
+
     }
 
     /**
@@ -41,16 +50,12 @@ class NotesActivity : AppCompatActivity() {
      * Handling menu item clicked.
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             R.id.menu_sort_creation_date -> {
-                val listFragment: ListFragment =
-                    supportFragmentManager.findFragmentById(R.id.fragment_list) as ListFragment
                 listFragment.sortByCreationDate()
                 true
             }
             R.id.menu_sort_eta -> {
-                val listFragment: ListFragment =
-                    supportFragmentManager.findFragmentById(R.id.fragment_list) as ListFragment
                 listFragment.sortByETA()
                 true
             }
@@ -64,7 +69,8 @@ class NotesActivity : AppCompatActivity() {
             // Not present in size:large menu_notes
             R.id.menu_btn_delete_all_note -> {
                 notesViewModel.deleteAllNote()
-                true }
+                true
+            }
 
             else -> super.onOptionsItemSelected(item)
         }
