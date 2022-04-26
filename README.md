@@ -89,3 +89,72 @@ Pour contourner cette limitation, 2 options sont possibles:
 
 ### <ins> 6.3 Les notes affichées dans la RecyclerView ne sont pas sélectionnables ni cliquables. Comment procéderiez-vous si vous souhaitiez proposer une interface persmettant de sélectionner une note pour l’éditer ? </ins>
 <br>
+
+Les manipulations pour rendres les notes cliquables sont les suivantes:
+
+ * Dans la déclaration de l'adapteur, nous définissons un argument (clickListener) pour récupérer une fonction qui représente un listener.
+
+ ```
+class NotesAdapter( private val clickListener: (NoteAndSchedule) -> Unit ) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
+ ```
+
+ > Pour faire plus proprement, nous aurions pu utiliser une interface. Mais pour la simplicité de ce tutoriel, nous allons continuer avec des lambdas.
+
+ * Dans la déclration du viewHolder, nous définissons une fonction en argument clickAtPosition.
+
+ ```
+ inner class ViewHolder(view: View, clickAtPosition: (Int) -> Unit) : RecyclerView.ViewHolder(view)
+ ```
+
+ * Dans le viewHolder définir le constructeur:
+
+ ```
+    init {
+        itemView.setOnClickListener { 
+            clickAtPosition(adapterPosition) 
+        }
+    }
+```
+
+* Modifier onCreateViewHolder pour paser une fonction au viewHolder:
+
+```
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return when (viewType) {
+            SIMPLE -> ViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.list_item_simple_note, parent, false)) {
+                clickListener(items[it])
+            }
+            /* SCHEDULED */
+            else -> ViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.list_item_scheduled_note, parent, false)) {
+                clickListener(items[it])
+            }
+        }
+    }
+```
+
+* Dans le fragment passer le listener à la création de l'adapteur:
+
+```
+    private val adapter = NotesAdapter() {
+        Log.v(TAG, "notes title: " + it.note.title)
+        // Intent to create activity of note edition should go here
+    }
+```
+
+Cette méthode est plus compliquée que certains tutoriels qui travaillent uniquement depuis onBindViewHolder. Cependant, nous n'effectuons pas plusieurs appels à setOnClickListener.
+
+```
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(items[position])
+
+        holder.itemView.setOnClickListener {
+            clickListener(items[position])
+        }
+    }
+```
+
+>[Référence](https://www.youtube.com/watch?v=GvLgWjPigmQ)
